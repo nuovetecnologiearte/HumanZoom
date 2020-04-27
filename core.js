@@ -24,7 +24,7 @@ function prelevaImg(){
       } else {
         // We reached our target server, but it returned an error
         console.log('errore nel prelevare il json');
-        setTimeout(prelevaImg, 500);
+        setTimeout(prelevaImg, 1000);
       }
     };
 
@@ -37,7 +37,7 @@ function prelevaImg(){
 
 function deleteDiv(){
   document.getElementsByTagName('img')[0].remove();
-  if(count>arrayLength-1){
+  if(count>arrayLength-2){
     prelevaImg();
   } else{
     count++;
