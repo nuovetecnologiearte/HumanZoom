@@ -37,7 +37,7 @@ function prelevaImg(){
 
 function deleteDiv(){
   document.getElementsByTagName('img')[0].remove();
-  if(count>arrayLength-2){
+  if(count>arrayLength-5){
     prelevaImg();
   } else{
     count++;
