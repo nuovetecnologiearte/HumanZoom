@@ -1,5 +1,5 @@
 var count = 0;
-var test = 0;
+var arrayLength = 0;
 function prelevaImg(){
     count = 0;
     var param = document.getElementById('your_name').value;
@@ -13,18 +13,18 @@ function prelevaImg(){
       // Success!
         var data = JSON.parse(request.responseText);
         console.log(data);
-        test=data.graphql.hashtag.edge_hashtag_to_media.edges.length;
+        arrayLength=data.graphql.hashtag.edge_hashtag_to_media.edges.length;
         for (let i=0; i<data.graphql.hashtag.edge_hashtag_to_media.edges.length; i++ ){
           var $this = data.graphql.hashtag.edge_hashtag_to_media.edges[i].node;
           document.getElementById('images').innerHTML += '<img src="'+$this.display_url+'">';
         }
 
-        setTimeout(deleteDiv, 10000)
+        setTimeout(deleteDiv, 5000)
 
       } else {
         // We reached our target server, but it returned an error
         console.log('errore nel prelevare il json');
-        setTimeout(prelevaImg, 1000);
+        setTimeout(prelevaImg, 500);
       }
     };
 
@@ -37,7 +37,7 @@ function prelevaImg(){
 
 function deleteDiv(){
   document.getElementsByTagName('img')[0].remove();
-  if(count>=test){
+  if(count>arrayLength-1){
     prelevaImg();
   } else{
     count++;
